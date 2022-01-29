@@ -1,7 +1,6 @@
 import 'package:appmeteo/api.dart';
 import 'package:appmeteo/components/WeatherIcon.dart';
 import 'package:appmeteo/functions.dart';
-import 'package:delayed_display/delayed_display.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
@@ -222,42 +221,39 @@ class _WeatherInfoLayoutState extends State<WeatherInfoLayout> {
                 physics: const BouncingScrollPhysics(),
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
-                    return DelayedDisplay(
-                      fadingDuration: const Duration(milliseconds: 250),
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-                        width: 100,
-                        decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.5),
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Text(
-                              DateFormat.j().format(DateTime.parse(
-                                      snapshot.data!['list'][index]['dt_txt'])),
-                              style: GoogleFonts.montserrat(
-                                fontSize: 18,
-                                color: Colors.white,
-                              ),
+                    return Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                      width: 100,
+                      decoration: BoxDecoration(
+                        color: Colors.white.withOpacity(0.5),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(
+                            DateFormat.j().format(DateTime.parse(
+                                    snapshot.data!['list'][index]['dt_txt'])),
+                            style: GoogleFonts.montserrat(
+                              fontSize: 18,
+                              color: Colors.white,
                             ),
-                            const SizedBox(height: 5),
-                            WeatherIcon(time: snapshot.data!['list'][index]['weather'][0]['main']),
-                            const SizedBox(height: 5),
-                            Text(
-                              snapshot.data!['list'][index]['main']['temp']
-                                          .round()
-                                          .toString() +
-                                      "°",
-                              style: GoogleFonts.montserrat(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white,
-                              ),
+                          ),
+                          const SizedBox(height: 5),
+                          WeatherIcon(time: snapshot.data!['list'][index]['weather'][0]['main']),
+                          const SizedBox(height: 5),
+                          Text(
+                            snapshot.data!['list'][index]['main']['temp']
+                                        .round()
+                                        .toString() +
+                                    "°",
+                            style: GoogleFonts.montserrat(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     );
                   },

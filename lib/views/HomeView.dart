@@ -1,4 +1,5 @@
 import 'package:appmeteo/components/CurrentCityBox.dart';
+import 'package:appmeteo/views/DevView.dart';
 import 'package:appmeteo/views/ExplorerView.dart';
 import 'package:appmeteo/api.dart';
 import 'package:appmeteo/components/CityCarousel.dart';
@@ -19,7 +20,7 @@ class HomeView extends StatefulWidget {
 
 class HomeViewState extends State<HomeView> {
   int selectedIndex = 0;
-  
+
   @override
   Widget build(BuildContext context) {
     // Changer les propriétés systèmes
@@ -111,9 +112,8 @@ class HomeViewState extends State<HomeView> {
         selectedLabelStyle: GoogleFonts.poppins(fontWeight: FontWeight.bold),
         onTap: (newIndex) {
           //print(newIndex);
-          setState(() {
-            selectedIndex = newIndex;
-          });
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => DevView()));
         },
       ),
     );

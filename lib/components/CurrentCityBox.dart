@@ -37,7 +37,7 @@ class _CurrentCityBoxState extends State<CurrentCityBox> {
           ),
           const SizedBox(height: 20),
           Container(
-            padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 25),
             width: screenSize[0] - 55,
             height: 220,
             decoration: BoxDecoration(
@@ -105,7 +105,7 @@ class _CurrentCityBoxState extends State<CurrentCityBox> {
                               ),
                               WeatherIcon(
                                 time: snapshot.data!['weather'][0]['main'],
-                                size: screenSize[0] / 3.1,
+                                size: screenSize[0] / 3,
                               ),
                             ],
                           ),

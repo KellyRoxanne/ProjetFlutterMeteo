@@ -44,7 +44,7 @@ class _CityBoxState extends State<CityBox> {
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     return Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           snapshot.data!['name'], //Afficher le nom de la ville
@@ -62,10 +62,21 @@ class _CityBoxState extends State<CityBox> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  snapshot.data!['sys']['country'], //Afficher le nom de la ville
+                                  snapshot.data!['sys']
+                                      ['country'], //Afficher le nom de la ville
                                   style: GoogleFonts.poppins(
                                     fontSize: 16,
-                                    color: const Color.fromRGBO(141, 152, 173, 1),
+                                    color:
+                                        const Color.fromRGBO(141, 152, 173, 1),
+                                  ),
+                                ),
+                                Text(
+                                  snapshot.data!['weather'][0][
+                                      'description'], //Afficher le nom de la ville
+                                  style: GoogleFonts.poppins(
+                                    fontSize: 12,
+                                    color:
+                                        const Color.fromRGBO(141, 152, 173, 1),
                                   ),
                                 ),
                                 Text(
@@ -88,12 +99,16 @@ class _CityBoxState extends State<CityBox> {
                           ],
                         ),
                         Container(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 10),
+                          padding: const EdgeInsets.symmetric(horizontal: 10),
                           width: screenSize[0],
                           height: 90,
                           decoration: BoxDecoration(
-                          boxShadow: [BoxShadow(color: Colors.grey.withOpacity(0.1), blurRadius: 10, blurStyle: BlurStyle.solid)],
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.grey.withOpacity(0.1),
+                                  blurRadius: 10,
+                                  blurStyle: BlurStyle.solid)
+                            ],
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(25),
                           ),
@@ -114,7 +129,8 @@ class _CityBoxState extends State<CityBox> {
                                   const SizedBox(width: 5),
                                   Text(
                                     snapshot.data!['main']['humidity']
-                                            .toString()  + '%',
+                                            .toString() +
+                                        '%',
                                     style: GoogleFonts.poppins(
                                       fontSize: 12,
                                       fontWeight: FontWeight.bold,
@@ -148,7 +164,9 @@ class _CityBoxState extends State<CityBox> {
                                     width: 5,
                                   ),
                                   Text(
-                                    snapshot.data!['main']['pressure'].toString() + ' hPa',
+                                    snapshot.data!['main']['pressure']
+                                            .toString() +
+                                        ' hPa',
                                     style: GoogleFonts.poppins(
                                       fontSize: 12,
                                       fontWeight: FontWeight.bold,
@@ -182,8 +200,8 @@ class _CityBoxState extends State<CityBox> {
                                     width: 5,
                                   ),
                                   Text(
-                                    snapshot.data!['wind']['speed']
-                                            .toString() + ' m/s',
+                                    snapshot.data!['wind']['speed'].toString() +
+                                        ' m/s',
                                     style: GoogleFonts.poppins(
                                       fontSize: 12,
                                       fontWeight: FontWeight.bold,
@@ -207,13 +225,16 @@ class _CityBoxState extends State<CityBox> {
                               Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  const Icon(Icons.remove_red_eye_outlined, color: Color.fromRGBO(0, 23, 95, 1),
+                                  const Icon(
+                                    Icons.remove_red_eye_outlined,
+                                    color: Color.fromRGBO(0, 23, 95, 1),
                                   ),
                                   const SizedBox(
                                     width: 5,
                                   ),
                                   Text(
-                                    (snapshot.data!['visibility'] / 1000).toString() +
+                                    (snapshot.data!['visibility'] / 1000)
+                                            .toString() +
                                         ' Km',
                                     style: GoogleFonts.poppins(
                                       fontSize: 12,
@@ -252,7 +273,7 @@ class _CityBoxState extends State<CityBox> {
                   );
                 },
               ),
-              ],
+            ],
           ),
         ),
       ),

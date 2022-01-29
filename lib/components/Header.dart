@@ -24,13 +24,7 @@ class _HeaderState extends State<Header> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  'Bonjour',
-                  style: GoogleFonts.poppins(
-                    fontSize: 40,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+                oo(),
                 Text(
                   dateFormat.format(DateTime.now()),
                   style: GoogleFonts.poppins(
@@ -59,5 +53,31 @@ class _HeaderState extends State<Header> {
         ),
       ),
     );
+  }
+
+  Widget oo() {
+    var now = new DateTime.now();
+    var formatter = new DateFormat('HH:mm');
+
+    String formattedDate = formatter.format(now);
+    print(formattedDate);
+    if (formattedDate.compareTo('13:00') < 0 &&
+        formattedDate.compareTo('06:00') > 0) {
+      return Text(
+        'Bonjour',
+        style: GoogleFonts.poppins(
+          fontSize: 40,
+          fontWeight: FontWeight.bold,
+        ),
+      );
+    } else {
+      return Text(
+        'Bonsoir',
+        style: GoogleFonts.poppins(
+          fontSize: 40,
+          fontWeight: FontWeight.bold,
+        ),
+      );
+    }
   }
 }
